@@ -42,5 +42,9 @@ public class ToyInputReader {
 	public ArrayList<String> getToyCommandList() {
 		return toyCommandList;
 	}
+
+	public String getFileName() {
+		return fileName;
+	}
 	
 }
