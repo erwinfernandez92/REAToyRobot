@@ -18,7 +18,7 @@ public class ToyInputReaderTester {
 	
 	@Test
 	public void testRead() {
-		ToyInputReader tirTester = new ToyInputReader();
+		ToyInputReader tirTester = new ToyInputReader("testInput.txt");
 		tirTester.readInput();
 		assertEquals(tirTester.getToyCommandList().get(0), "PLACE 0,0,NORTH");
 		assertEquals(tirTester.getToyCommandList().get(1), "MOVE");
