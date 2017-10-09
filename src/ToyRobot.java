@@ -12,6 +12,8 @@ public class ToyRobot {
 	private int yPos;
 	private Direction facing;
 	
+	//adding default position of 0,0 and facing 
+	//north when no input was given
 	public ToyRobot() {
 		xPos=0;
 		yPos=0;
