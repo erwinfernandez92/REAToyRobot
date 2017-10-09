@@ -24,6 +24,33 @@ public class ToyRobot {
 		yPos = y;
 		facing = f;
 	}
+	
+	public void move() {
+		switch(facing) {
+		case NORTH : {
+			if (yPos<4) {
+				yPos++;
+			}
+		}
+		case SOUTH : {
+			if (yPos>0) {
+				yPos--;
+			}
+		}
+		case EAST : {
+			if (xPos<4) {
+				xPos++;
+			}
+		}
+		case WEST : {
+			if (xPos>0) {
+				xPos--;
+			}
+		}
+		
+		}
+	}
+	
 	public int getxPos() {
 		return xPos;
 	}
