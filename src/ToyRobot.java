@@ -24,11 +24,13 @@ public class ToyRobot {
 		xPos=0;
 		yPos=0;
 		facing = Direction.NORTH;
+		atTable = false;
 	}
 	public ToyRobot(int x, int y, Direction f) {
 		xPos = x;
 		yPos = y;
 		facing = f;
+		atTable = false;
 	}
 	
 	public boolean placeAtTable(int x, int y, Direction f) {
