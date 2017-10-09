@@ -78,19 +78,19 @@ public class ToyRobot {
 	
 	public void faceLeft() {
 		switch(facing) {
-		case NORTH : facing = Direction.WEST;
-		case WEST : facing = Direction.SOUTH;
-		case SOUTH : facing = Direction.EAST;
-		case EAST : facing = Direction.NORTH;
+		case NORTH : facing = Direction.WEST;break;
+		case WEST : facing = Direction.SOUTH;break;
+		case SOUTH : facing = Direction.EAST;break;
+		case EAST : facing = Direction.NORTH;break;
 		}
 	}
 	
 	public void faceRight() {
 		switch(facing) {
-		case NORTH : facing = Direction.EAST;
-		case WEST : facing = Direction.NORTH;
-		case SOUTH : facing = Direction.WEST;
-		case EAST : facing = Direction.SOUTH;
+		case NORTH : facing = Direction.EAST;break;
+		case WEST : facing = Direction.NORTH;break;
+		case SOUTH : facing = Direction.WEST;break;
+		case EAST : facing = Direction.SOUTH;break;
 		}
 	}
 	
