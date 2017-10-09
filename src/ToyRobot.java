@@ -1,3 +1,8 @@
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 public class ToyRobot {
 	
@@ -52,6 +57,19 @@ public class ToyRobot {
 			break;
 		}
 		
+		}
+	}
+	
+	public void report(String outLoc) {
+		Writer writer = null;
+		try {
+		    writer = new BufferedWriter(new OutputStreamWriter(
+		          new FileOutputStream(outLoc), "utf-8"));
+		    writer.write(xPos + "," + yPos + ","+facing);
+		} catch (IOException ex) {
+		  System.out.println("file error, filename: "+ outLoc);
+		} finally {
+		   try {writer.close();} catch (Exception ex) {/*ignore*/}
 		}
 	}
 	
