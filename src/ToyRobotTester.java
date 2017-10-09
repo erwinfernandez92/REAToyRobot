@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -139,4 +140,35 @@ public class ToyRobotTester {
 		assertFalse(trTest.isAtTable());
 	}
 
+	@Test
+	public void testDoCommands() {
+		ToyRobot trTest = new ToyRobot();
+		ArrayList<String> testCommands = new ArrayList<String>();
+		testCommands.add("PLACE 1,1,NORTH");
+		testCommands.add("MOVE");
+		testCommands.add("LEFT");
+		testCommands.add("MOVE");
+		testCommands.add("RIGHT");
+		testCommands.add("MOVE");
+		testCommands.add("REPORT");
+		trTest.doCommands(testCommands);
+		
+		String line = null;
+		
+		try {
+			FileReader fileReader = new FileReader("output.txt");
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			
+			line = bufferedReader.readLine();
+			
+			bufferedReader.close();
+		}
+		catch(FileNotFoundException ex) {
+			System.out.println("Unable to open file output.txt");
+		}
+		catch(IOException ex) {
+			System.out.println("Error reading file output.txt");
+		}
+		assert(line.equals("0,3,NORTH"));
+	}
 }
