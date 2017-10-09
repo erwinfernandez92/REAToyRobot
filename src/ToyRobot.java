@@ -1,15 +1,23 @@
 
 public class ToyRobot {
+	
+	public enum Direction{
+		NORTH,
+		SOUTH,
+		WEST,
+		EAST;
+	}
+	
 	private int xPos;
 	private int yPos;
-	private String facing;
+	private Direction facing;
 	
 	public ToyRobot() {
 		xPos=0;
 		yPos=0;
-		facing = "NORTH";
+		facing = Direction.NORTH;
 	}
-	public ToyRobot(int x, int y, String f) {
+	public ToyRobot(int x, int y, Direction f) {
 		xPos = x;
 		yPos = y;
 		facing = f;
@@ -26,11 +34,12 @@ public class ToyRobot {
 	public void setyPos(int yPos) {
 		this.yPos = yPos;
 	}
-	public String getFacing() {
+	public Direction getFacing() {
 		return facing;
 	}
-	public void setFacing(String facing) {
+	public void setFacing(Direction facing) {
 		this.facing = facing;
 	}
+	
 	
 }
