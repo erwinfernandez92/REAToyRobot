@@ -1,4 +1,10 @@
 import static org.junit.Assert.*;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.junit.Test;
 
 
@@ -74,6 +80,29 @@ public class ToyRobotTester {
 		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST);
 		trTest.move();
 		assertEquals(4, trTest.getxPos());
+	}
+	
+	@Test
+	public void testReport() {
+		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST);
+		trTest.report("output.txt");
+		String line = null;
+		
+		try {
+			FileReader fileReader = new FileReader("output.txt");
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			
+			line = bufferedReader.readLine();
+			
+			bufferedReader.close();
+		}
+		catch(FileNotFoundException ex) {
+			System.out.println("Unable to open file output.txt");
+		}
+		catch(IOException ex) {
+			System.out.println("Error reading file output.txt");
+		}
+		assert(line.equals("3,2,EAST"));
 	}
 
 }
