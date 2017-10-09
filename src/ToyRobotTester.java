@@ -118,5 +118,25 @@ public class ToyRobotTester {
 		trTest.faceRight();
 		assertEquals(ToyRobot.Direction.SOUTH, trTest.getFacing());
 	}
+	
+	@Test
+	public void testAtTable() {
+		ToyRobot trTest = new ToyRobot();
+		assert(trTest.placeAtTable(3, 2, ToyRobot.Direction.EAST));
+		assertEquals(ToyRobot.Direction.EAST, trTest.getFacing());
+		assertEquals(3, trTest.getxPos());
+		assertEquals(2, trTest.getyPos());
+		assert(trTest.isAtTable());
+	}
+	
+	@Test
+	public void testNotAtTable() {
+		ToyRobot trTest = new ToyRobot();
+		assertFalse(trTest.placeAtTable(6, 20, ToyRobot.Direction.EAST));
+		assertNotEquals(ToyRobot.Direction.EAST, trTest.getFacing());
+		assertNotEquals(6, trTest.getxPos());
+		assertNotEquals(20, trTest.getyPos());
+		assertFalse(trTest.isAtTable());
+	}
 
 }
