@@ -16,6 +16,7 @@ public class ToyRobot {
 	private int xPos;
 	private int yPos;
 	private Direction facing;
+	private boolean atTable;
 	
 	//adding default position of 0,0 and facing 
 	//north when no input was given
@@ -28,6 +29,18 @@ public class ToyRobot {
 		xPos = x;
 		yPos = y;
 		facing = f;
+	}
+	
+	public boolean placeAtTable(int x, int y, Direction f) {
+		if((x>=0)&&(x<=4)&&(y>=0)&&(y<=4)) {
+			xPos = x;
+			yPos = y;
+			facing = f;
+			atTable =true;
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	public void move() {
