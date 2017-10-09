@@ -47,5 +47,33 @@ public class ToyRobotTester {
 		trTest.move();
 		assertEquals(4, trTest.getyPos());
 	}
+	
+	@Test
+	public void testMoveUp() {
+		ToyRobot trTest = new ToyRobot(0,2,ToyRobot.Direction.NORTH);
+		trTest.move();
+		assertEquals(3, trTest.getyPos());
+	}
+	
+	@Test
+	public void testMoveDown() {
+		ToyRobot trTest = new ToyRobot(0,2,ToyRobot.Direction.SOUTH);
+		trTest.move();
+		assertEquals(1, trTest.getyPos());
+	}
+	
+	@Test
+	public void testMoveLeft() {
+		ToyRobot trTest = new ToyRobot(1,2,ToyRobot.Direction.WEST);
+		trTest.move();
+		assertEquals(0, trTest.getxPos());
+	}
+	
+	@Test
+	public void testMoveRight() {
+		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST);
+		trTest.move();
+		assertEquals(4, trTest.getxPos());
+	}
 
 }
