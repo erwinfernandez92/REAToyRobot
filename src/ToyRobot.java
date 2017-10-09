@@ -60,6 +60,24 @@ public class ToyRobot {
 		}
 	}
 	
+	public void faceLeft() {
+		switch(facing) {
+		case NORTH : facing = Direction.WEST;
+		case WEST : facing = Direction.SOUTH;
+		case SOUTH : facing = Direction.EAST;
+		case EAST : facing = Direction.NORTH;
+		}
+	}
+	
+	public void faceRight() {
+		switch(facing) {
+		case NORTH : facing = Direction.EAST;
+		case WEST : facing = Direction.NORTH;
+		case SOUTH : facing = Direction.WEST;
+		case EAST : facing = Direction.SOUTH;
+		}
+	}
+	
 	public void report(String outLoc) {
 		Writer writer = null;
 		try {
