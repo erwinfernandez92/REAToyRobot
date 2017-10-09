@@ -36,7 +36,7 @@ public class ToyRobot {
 			xPos = x;
 			yPos = y;
 			facing = f;
-			atTable =true;
+			setAtTable(true);
 			return true;
 		}else {
 			return false;
@@ -121,6 +121,12 @@ public class ToyRobot {
 	}
 	public void setFacing(Direction facing) {
 		this.facing = facing;
+	}
+	public boolean isAtTable() {
+		return atTable;
+	}
+	public void setAtTable(boolean atTable) {
+		this.atTable = atTable;
 	}
 	
 	
