@@ -8,8 +8,10 @@ public class REAToyRobotMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	
-  
+		ToyInputReader tir = new ToyInputReader();
+		tir.readInput();
+		ToyRobot tr = new ToyRobot();
+		tr.doCommands(tir.getToyCommandList());
 	}
 
 }
