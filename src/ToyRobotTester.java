@@ -104,5 +104,19 @@ public class ToyRobotTester {
 		}
 		assert(line.equals("3,2,EAST"));
 	}
+	
+	@Test
+	public void testFaceLeft() {
+		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST);
+		trTest.faceLeft();
+		assertEquals(ToyRobot.Direction.NORTH, trTest.getFacing());
+	}
+	
+	@Test
+	public void testFaceRight() {
+		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST);
+		trTest.faceRight();
+		assertEquals(ToyRobot.Direction.SOUTH, trTest.getFacing());
+	}
 
 }
