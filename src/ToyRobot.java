@@ -3,6 +3,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.ArrayList;
 
 public class ToyRobot {
 	
@@ -103,6 +104,29 @@ public class ToyRobot {
 		  System.out.println("file error, filename: "+ outLoc);
 		} finally {
 		   try {writer.close();} catch (Exception ex) {/*ignore*/}
+		}
+	}
+	
+	public void doCommands(ArrayList<String> toyCommands) {
+		String[] toyCommand;
+		
+		for(int i=0;i<toyCommands.size();i++) {
+			toyCommand = toyCommands.get(i).split(" ");
+			if (toyCommand[0].equals("PLACE")) {
+				String[] placeInput = toyCommand[1].split(",");
+				int x = Integer.valueOf( placeInput[0]);
+				int y = Integer.valueOf( placeInput[1]);
+				Direction f = Direction.valueOf(placeInput[2]);
+				placeAtTable(x,y,f);
+			}else if (toyCommand[0].equals("MOVE") && atTable) {
+				move();
+			}else if (toyCommand[0].equals("LEFT") && atTable) {
+				faceLeft();
+			}else if (toyCommand[0].equals("RIGHT") && atTable) {
+				faceRight();
+			}else if (toyCommand[0].equals("REPORT")) {
+				report("output.txt");
+			}
 		}
 	}
 	
