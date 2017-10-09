@@ -31,21 +31,25 @@ public class ToyRobot {
 			if (yPos<4) {
 				yPos++;
 			}
+			break;
 		}
 		case SOUTH : {
 			if (yPos>0) {
 				yPos--;
 			}
+			break;
 		}
 		case EAST : {
 			if (xPos<4) {
 				xPos++;
 			}
+			break;
 		}
 		case WEST : {
 			if (xPos>0) {
 				xPos--;
 			}
+			break;
 		}
 		
 		}
