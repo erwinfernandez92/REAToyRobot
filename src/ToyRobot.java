@@ -107,6 +107,7 @@ public class ToyRobot {
 		    writer = new BufferedWriter(new OutputStreamWriter(
 		          new FileOutputStream(outLoc), "utf-8"));
 		    writer.write(xPos + "," + yPos + ","+facing);
+		    System.out.println("New Report has been writtn at "+outLoc);
 		} catch (IOException ex) {
 		  System.out.println("file error, filename: "+ outLoc);
 		} finally {
@@ -121,6 +122,7 @@ public class ToyRobot {
 	public void doCommands(ArrayList<String> toyCommands) {
 		String[] toyCommand;
 		
+		System.out.println("executing commands");
 		//going through command list, execute valid command
 		//and ignoring all invalid command.
 		for(int i=0;i<toyCommands.size();i++) {

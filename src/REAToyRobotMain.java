@@ -7,6 +7,7 @@ public class REAToyRobotMain {
 		ToyRobotTable trt = new ToyRobotTable(5,5);
 		ToyRobot tr = new ToyRobot(trt);
 		tr.doCommands(tir.getToyCommandList());
+		
 	}
 
 }
