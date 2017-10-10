@@ -13,7 +13,8 @@ public class ToyRobotTester {
 
 	@Test
 	public void testGeneratorWithoutParameter() {
-		ToyRobot trTest = new ToyRobot();
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(trtTest);
 		assertEquals(0, trTest.getxPos());
 		assertEquals(0, trTest.getyPos());
 		assertEquals(ToyRobot.Direction.NORTH, trTest.getFacing());
@@ -21,7 +22,8 @@ public class ToyRobotTester {
 	
 	@Test
 	public void testGeneratorWithParameter() {
-		ToyRobot trTest = new ToyRobot(1,5,ToyRobot.Direction.WEST);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(1,5,ToyRobot.Direction.WEST, trtTest);
 		assertEquals(1, trTest.getxPos());
 		assertEquals(5, trTest.getyPos());
 		assertEquals(ToyRobot.Direction.WEST, trTest.getFacing());
@@ -29,63 +31,72 @@ public class ToyRobotTester {
 	
 	@Test
 	public void testMoveOutsideLeftBoundary() {
-		ToyRobot trTest = new ToyRobot(0,0,ToyRobot.Direction.WEST);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(0,0,ToyRobot.Direction.WEST, trtTest);
 		trTest.move();
 		assertEquals(0, trTest.getxPos());
 	}
 	
 	@Test
 	public void testMoveOutsideRightBoundary() {
-		ToyRobot trTest = new ToyRobot(4,0,ToyRobot.Direction.EAST);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(4,0,ToyRobot.Direction.EAST, trtTest);
 		trTest.move();
 		assertEquals(4, trTest.getxPos());
 	}
 	
 	@Test
 	public void testMoveOutsideBottomBoundary() {
-		ToyRobot trTest = new ToyRobot(0,0,ToyRobot.Direction.SOUTH);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(0,0,ToyRobot.Direction.SOUTH, trtTest);
 		trTest.move();
 		assertEquals(0, trTest.getyPos());
 	}
 	
 	@Test
 	public void testMoveOutsideUpperBoundary() {
-		ToyRobot trTest = new ToyRobot(0,4,ToyRobot.Direction.NORTH);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(0,4,ToyRobot.Direction.NORTH, trtTest);
 		trTest.move();
 		assertEquals(4, trTest.getyPos());
 	}
 	
 	@Test
 	public void testMoveUp() {
-		ToyRobot trTest = new ToyRobot(0,2,ToyRobot.Direction.NORTH);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(0,2,ToyRobot.Direction.NORTH, trtTest);
 		trTest.move();
 		assertEquals(3, trTest.getyPos());
 	}
 	
 	@Test
 	public void testMoveDown() {
-		ToyRobot trTest = new ToyRobot(0,2,ToyRobot.Direction.SOUTH);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(0,2,ToyRobot.Direction.SOUTH, trtTest);
 		trTest.move();
 		assertEquals(1, trTest.getyPos());
 	}
 	
 	@Test
 	public void testMoveLeft() {
-		ToyRobot trTest = new ToyRobot(1,2,ToyRobot.Direction.WEST);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(1,2,ToyRobot.Direction.WEST, trtTest);
 		trTest.move();
 		assertEquals(0, trTest.getxPos());
 	}
 	
 	@Test
 	public void testMoveRight() {
-		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST, trtTest);
 		trTest.move();
 		assertEquals(4, trTest.getxPos());
 	}
 	
 	@Test
 	public void testReport() {
-		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST, trtTest);
 		trTest.report("output.txt");
 		String line = null;
 		
@@ -108,21 +119,24 @@ public class ToyRobotTester {
 	
 	@Test
 	public void testFaceLeft() {
-		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST, trtTest);
 		trTest.faceLeft();
 		assertEquals(ToyRobot.Direction.NORTH, trTest.getFacing());
 	}
 	
 	@Test
 	public void testFaceRight() {
-		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST);
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(3,2,ToyRobot.Direction.EAST, trtTest);
 		trTest.faceRight();
 		assertEquals(ToyRobot.Direction.SOUTH, trTest.getFacing());
 	}
 	
 	@Test
 	public void testAtTable() {
-		ToyRobot trTest = new ToyRobot();
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(trtTest);
 		assert(trTest.placeAtTable(3, 2, ToyRobot.Direction.EAST));
 		assertEquals(ToyRobot.Direction.EAST, trTest.getFacing());
 		assertEquals(3, trTest.getxPos());
@@ -132,7 +146,8 @@ public class ToyRobotTester {
 	
 	@Test
 	public void testNotAtTable() {
-		ToyRobot trTest = new ToyRobot();
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(trtTest);
 		assertFalse(trTest.placeAtTable(6, 20, ToyRobot.Direction.EAST));
 		assertNotEquals(ToyRobot.Direction.EAST, trTest.getFacing());
 		assertNotEquals(6, trTest.getxPos());
@@ -142,7 +157,8 @@ public class ToyRobotTester {
 
 	@Test
 	public void testDoCommands() {
-		ToyRobot trTest = new ToyRobot();
+		ToyRobotTable trtTest= new ToyRobotTable(5,5);
+		ToyRobot trTest = new ToyRobot(trtTest);
 		ArrayList<String> testCommands = new ArrayList<String>();
 		testCommands.add("PLACE 1,1,NORTH");
 		testCommands.add("MOVE");

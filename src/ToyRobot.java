@@ -18,24 +18,31 @@ public class ToyRobot {
 	private int yPos;
 	private Direction facing;
 	private boolean atTable;
+	private ToyRobotTable trTable;
 	
 	//adding default position of 0,0 and facing 
 	//north when no input was given
-	public ToyRobot() {
+	public ToyRobot(ToyRobotTable toyRobotTable) {
 		xPos=0;
 		yPos=0;
 		facing = Direction.NORTH;
+		trTable = toyRobotTable;
 		atTable = false;
 	}
-	public ToyRobot(int x, int y, Direction f) {
+	
+	public ToyRobot(int x, int y, Direction f, ToyRobotTable toyRobotTable) {
 		xPos = x;
 		yPos = y;
 		facing = f;
+		trTable = toyRobotTable;
 		atTable = false;
 	}
 	
 	public boolean placeAtTable(int x, int y, Direction f) {
-		if((x>=0)&&(x<=4)&&(y>=0)&&(y<=4)) {
+		if((x>=trTable.getBottomLeftX())&&
+				(x<=(trTable.getBottomLeftX()+trTable.getTableWidth()-1))&&
+				(y>=trTable.getBottomLeftY())&&
+				(y<=(trTable.getBottomLeftY()+trTable.getTableLength()-1))) {
 			xPos = x;
 			yPos = y;
 			facing = f;
@@ -49,19 +56,19 @@ public class ToyRobot {
 	public void move() {
 		switch(facing) {
 		case NORTH : {
-			if (yPos<4) {
+			if (yPos<(trTable.getBottomLeftY()+trTable.getTableLength()-1)) {
 				yPos++;
 			}
 			break;
 		}
 		case SOUTH : {
-			if (yPos>0) {
+			if (yPos>trTable.getBottomLeftY()) {
 				yPos--;
 			}
 			break;
 		}
 		case EAST : {
-			if (xPos<4) {
+			if (xPos<(trTable.getBottomLeftX()+trTable.getTableWidth()-1)) {
 				xPos++;
 			}
 			break;
@@ -103,21 +110,33 @@ public class ToyRobot {
 		} catch (IOException ex) {
 		  System.out.println("file error, filename: "+ outLoc);
 		} finally {
-		   try {writer.close();} catch (Exception ex) {/*ignore*/}
+		   try {writer.close();
+		   } 
+		   catch (Exception ex) {
+			   System.out.println("error closing output file");
+		   }
 		}
 	}
 	
 	public void doCommands(ArrayList<String> toyCommands) {
 		String[] toyCommand;
 		
+		//going through command list, execute valid command
+		//and ignoring all invalid command.
 		for(int i=0;i<toyCommands.size();i++) {
 			toyCommand = toyCommands.get(i).split(" ");
 			if (toyCommand[0].equals("PLACE")) {
-				String[] placeInput = toyCommand[1].split(",");
-				int x = Integer.valueOf( placeInput[0]);
-				int y = Integer.valueOf( placeInput[1]);
-				Direction f = Direction.valueOf(placeInput[2]);
-				placeAtTable(x,y,f);
+				//executing place command only if it is
+				//accompanied by valid input
+				try {
+					String[] placeInput = toyCommand[1].split(",");
+					int x = Integer.valueOf( placeInput[0]);
+					int y = Integer.valueOf( placeInput[1]);
+					Direction f = Direction.valueOf(placeInput[2]);
+					placeAtTable(x,y,f);
+				}catch (Exception e) {
+					continue;
+				}
 			}else if (toyCommand[0].equals("MOVE") && atTable) {
 				move();
 			}else if (toyCommand[0].equals("LEFT") && atTable) {
