@@ -120,11 +120,15 @@ public class ToyRobot {
 		for(int i=0;i<toyCommands.size();i++) {
 			toyCommand = toyCommands.get(i).split(" ");
 			if (toyCommand[0].equals("PLACE")) {
-				String[] placeInput = toyCommand[1].split(",");
-				int x = Integer.valueOf( placeInput[0]);
-				int y = Integer.valueOf( placeInput[1]);
-				Direction f = Direction.valueOf(placeInput[2]);
-				placeAtTable(x,y,f);
+				try {
+					String[] placeInput = toyCommand[1].split(",");
+					int x = Integer.valueOf( placeInput[0]);
+					int y = Integer.valueOf( placeInput[1]);
+					Direction f = Direction.valueOf(placeInput[2]);
+					placeAtTable(x,y,f);
+				}catch (Exception e) {
+					continue;
+				}
 			}else if (toyCommand[0].equals("MOVE") && atTable) {
 				move();
 			}else if (toyCommand[0].equals("LEFT") && atTable) {
