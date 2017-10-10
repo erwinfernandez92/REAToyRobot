@@ -10,7 +10,8 @@ public class REAToyRobotMain {
 		// TODO Auto-generated method stub
 		ToyInputReader tir = new ToyInputReader();
 		tir.readInput();
-		ToyRobot tr = new ToyRobot();
+		ToyRobotTable trt = new ToyRobotTable(5,5);
+		ToyRobot tr = new ToyRobot(trt);
 		tr.doCommands(tir.getToyCommandList());
 	}
 
