@@ -110,16 +110,24 @@ public class ToyRobot {
 		} catch (IOException ex) {
 		  System.out.println("file error, filename: "+ outLoc);
 		} finally {
-		   try {writer.close();} catch (Exception ex) {/*ignore*/}
+		   try {writer.close();
+		   } 
+		   catch (Exception ex) {
+			   System.out.println("error closing output file");
+		   }
 		}
 	}
 	
 	public void doCommands(ArrayList<String> toyCommands) {
 		String[] toyCommand;
 		
+		//going through command list, execute valid command
+		//and ignoring all invalid command.
 		for(int i=0;i<toyCommands.size();i++) {
 			toyCommand = toyCommands.get(i).split(" ");
 			if (toyCommand[0].equals("PLACE")) {
+				//executing place command only if it is
+				//accompanied by valid input
 				try {
 					String[] placeInput = toyCommand[1].split(",");
 					int x = Integer.valueOf( placeInput[0]);
