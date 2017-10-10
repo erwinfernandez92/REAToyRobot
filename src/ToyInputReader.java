@@ -20,7 +20,7 @@ public class ToyInputReader {
 	
 	public void readInput() {
 		String line;
-		
+		System.out.println("Reading input.txt");
 		try {
 			FileReader fileReader = new FileReader(fileName);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
